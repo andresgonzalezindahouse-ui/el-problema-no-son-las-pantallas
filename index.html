@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>El problema no son las pantallas | Andrés González Palacio</title>
+  <meta name="description" content="Un ebook para padres que quieren criar con criterio en un mundo digital. Una forma distinta de entender pantallas, autonomía, tecnología y crianza." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="El problema no son las pantallas." />
+  <meta property="og:description" content="Una forma distinta de criar en un mundo que cambió para siempre." />
+  <meta property="og:image" content="/portada.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="El problema no son las pantallas." />
+  <meta name="twitter:description" content="Una forma distinta de criar en un mundo que cambió para siempre." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="site-header" class="header">
+    <div class="header__inner">
+      <a href="#" class="header__author">Andrés González Palacio</a>
+      <a href="#cta-final" class="header__cta" id="header-buy-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        Comprar
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="eyebrow anim-fade-up">Nuevo ebook en Amazon</span>
+          <h1 class="hero__title anim-fade-up" style="--delay: 0.1s">El problema no son<br/>las pantallas.</h1>
+          <p class="hero__subtitle anim-fade-up" style="--delay: 0.2s">Una forma distinta de criar en un mundo que cambió para siempre.</p>
+          <p class="hero__text anim-fade-up" style="--delay: 0.3s">No se trata de apagarlas. Se trata de encender el criterio. Un libro para padres que sienten que el mundo cambió más rápido que las reglas con las que aprendieron a criar.</p>
+          <p class="hero__available anim-fade-up" style="--delay: 0.4s">Disponible como ebook en</p>
+          <div class="store-buttons anim-fade-up" style="--delay: 0.45s">
+            <a href="#REEMPLAZAR_POR_LINK_AMAZON" target="_blank" rel="noopener" class="store-btn" id="hero-btn-amazon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 01-.753.069c-1.06-.878-1.25-1.284-1.828-2.119-1.748 1.784-2.985 2.317-5.249 2.317-2.68 0-4.764-1.653-4.764-4.96 0-2.583 1.401-4.339 3.392-5.2 1.726-.76 4.139-.895 5.984-1.105v-.41c0-.756.058-1.65-.386-2.303-.386-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.566-.547.58l-3.065-.33c-.258-.058-.544-.266-.472-.66C6.025 1.464 9.11 0 11.862 0c1.407 0 3.243.373 4.351 1.438 1.407 1.307 1.272 3.05 1.272 4.948v4.482c0 1.348.559 1.94 1.084 2.67.185.261.224.574-.012.765-.592.494-1.645 1.415-2.224 1.93l-.189.162z"/><path d="M21.63 19.672C19.086 21.738 15.35 22.84 12.12 22.84c-4.548 0-8.644-1.682-11.745-4.48-.243-.22-.026-.52.267-.35 3.344 1.946 7.48 3.118 11.753 3.118 2.882 0 6.052-.597 8.972-1.834.44-.188.81.289.263.378z"/><path d="M22.69 18.404c-.332-.425-2.191-.2-3.025-.101-.254.03-.293-.19-.064-.35 1.482-1.04 3.912-.74 4.194-.392.284.352-.074 2.787-1.465 3.95-.214.18-.417.084-.322-.154.312-.779 1.013-2.527.682-2.953z"/></svg>
+              Amazon
+            </a>
+            <a href="#REEMPLAZAR_POR_LINK_GOOGLE_PLAY" target="_blank" rel="noopener" class="store-btn" id="hero-btn-google">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.4l2.834 1.64a1 1 0 010 1.733l-2.834 1.64-2.532-2.533 2.532-2.48zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/></svg>
+              Google Play
+            </a>
+            <a href="#REEMPLAZAR_POR_LINK_APPLE_BOOKS" target="_blank" rel="noopener" class="store-btn" id="hero-btn-apple">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Apple Books
+            </a>
+          </div>
+          <div class="hero__actions anim-fade-up" style="--delay: 0.55s">
+            <a href="#fragmento" class="btn btn--ghost" id="hero-fragment-btn">
+              Leer un fragmento
+            </a>
+          </div>
+        </div>
+        <div class="hero__cover anim-scale-in">
+          <div class="hero__cover-glow"></div>
+          <img src="/portada.jpg" alt="Portada del libro El problema no son las pantallas" width="420" height="630" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PREGUNTAS ===== -->
+    <section id="preguntas" class="section section--questions">
+      <div class="section__inner">
+        <h2 class="section__title anim-fade-up">Si eres padre, probablemente ya te hiciste estas preguntas</h2>
+        <div class="cards-grid cards-grid--3">
+          <article class="card anim-fade-up" style="--delay: 0.1s" id="card-limitar">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="card__title">¿Debería limitar más?</h3>
+            <p class="card__text">La pregunta no es solo cuánto tiempo pasa frente a una pantalla.</p>
+          </article>
+          <article class="card anim-fade-up" style="--delay: 0.2s" id="card-tiempo">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="card__title">¿Está perdiendo el tiempo?</h3>
+            <p class="card__text">Tal vez está entrenando habilidades que todavía no sabes leer.</p>
+          </article>
+          <article class="card anim-fade-up" style="--delay: 0.3s" id="card-criar">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="card__title">¿Cómo crío hoy?</h3>
+            <p class="card__text">Las respuestas viejas no siempre sirven para un mundo nuevo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS STRIP ===== -->
+    <section class="stats-strip" id="stats">
+      <div class="stats-strip__inner">
+        <div class="stat anim-fade-up" style="--delay: 0.1s">
+          <span class="stat__number" data-count="14">14</span>
+          <span class="stat__label">Capítulos</span>
+        </div>
+        <div class="stat anim-fade-up" style="--delay: 0.2s">
+          <span class="stat__number" data-count="4">4</span>
+          <span class="stat__label">Pilares de crianza</span>
+        </div>
+        <div class="stat anim-fade-up" style="--delay: 0.3s">
+          <span class="stat__number">∞</span>
+          <span class="stat__label">Conversaciones por abrir</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VERDAD INCÓMODA ===== -->
+    <section id="verdad" class="section section--truth">
+      <div class="section__inner section__inner--narrow">
+        <!-- Decorative image: caos → direction -->
+        <div class="deco-image deco-image--truth anim-parallax">
+          <img src="/deco-caos.jpg" alt="" aria-hidden="true" loading="lazy" />
+        </div>
+        <span class="eyebrow anim-fade-up">La verdad incómoda</span>
+        <div class="section-divider anim-fade-up" style="--delay: 0.05s"><span class="section-divider__dot"></span></div>
+        <h2 class="section__title section__title--large anim-fade-up" style="--delay: 0.1s">El problema no es la pantalla.</h2>
+        <p class="section__lead anim-fade-up" style="--delay: 0.2s">Es lo que dejamos de formar mientras intentamos controlarla. Puedes quitar una pantalla y aun así formar un niño inseguro, dependiente y sin criterio.</p>
+      </div>
+    </section>
+
+    <!-- ===== PROPUESTA ===== -->
+    <section id="propuesta" class="section section--proposal">
+      <div class="section__inner">
+        <!-- Decorative image: tablet with criteria -->
+        <div class="deco-image deco-image--proposal anim-parallax">
+          <img src="/deco-tablet.jpg" alt="" aria-hidden="true" loading="lazy" />
+        </div>
+        <span class="eyebrow anim-fade-up">Lo que propone este libro</span>
+        <div class="cards-grid cards-grid--4">
+          <article class="card card--pillar anim-fade-up" style="--delay: 0.1s" id="card-criterio">
+            <div class="card__icon card__icon--amber">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
+            </div>
+            <h3 class="card__title">Criterio</h3>
+            <p class="card__text">Formar niños que entiendan antes de obedecer.</p>
+          </article>
+          <article class="card card--pillar anim-fade-up" style="--delay: 0.2s" id="card-intencion">
+            <div class="card__icon card__icon--blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <h3 class="card__title">Intención</h3>
+            <p class="card__text">Convertir pantalla, juego e intereses en proceso.</p>
+          </article>
+          <article class="card card--pillar anim-fade-up" style="--delay: 0.3s" id="card-estructura">
+            <div class="card__icon card__icon--orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="card__title">Estructura</h3>
+            <p class="card__text">Libertad real, con límites que tienen sentido.</p>
+          </article>
+          <article class="card card--pillar anim-fade-up" style="--delay: 0.4s" id="card-conversacion">
+            <div class="card__icon card__icon--warm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <h3 class="card__title">Conversación</h3>
+            <p class="card__text">Hablar de verdad, dinero, error y decisiones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAGMENTO ===== -->
+    <section id="fragmento" class="section section--fragment">
+      <div class="section__inner section__inner--narrow">
+        <span class="eyebrow anim-fade-up">Fragmento</span>
+        <div class="section-divider anim-fade-up" style="--delay: 0.05s"><span class="section-divider__dot"></span></div>
+        <blockquote class="quote anim-fade-up" style="--delay: 0.1s">
+          <p>"El problema es que casi siempre nos quedamos en la superficie. Vemos la pantalla y asumimos que sabemos lo que está pasando. Pero no lo sabemos."</p>
+        </blockquote>
+        <p class="section__text anim-fade-up" style="--delay: 0.2s">Cuando creemos que el problema es el tiempo, respondemos con control. Limitamos, prohibimos, reducimos. Y con eso, muchas veces cortamos procesos que podrían convertirse en algo mucho más grande.</p>
+      </div>
+    </section>
+
+    <!-- ===== PARA QUIÉN ES ===== -->
+    <section id="para-quien" class="section section--audience">
+      <div class="section__inner section__inner--narrow">
+        <!-- Decorative image: doodle trazos -->
+        <div class="deco-image deco-image--audience anim-parallax">
+          <img src="/deco-trazos.jpg" alt="" aria-hidden="true" loading="lazy" />
+        </div>
+        <span class="eyebrow anim-fade-up">Para quién es</span>
+        <h2 class="section__title anim-fade-up" style="--delay: 0.1s">Para padres que no quieren criar en piloto automático.</h2>
+        <p class="section__text anim-fade-up" style="--delay: 0.2s">Para quienes intuyen que prohibir no basta. Para quienes quieren entender antes de controlar. Para quienes ven a sus hijos crecer en un mundo que ya no se parece al de su infancia.</p>
+        <p class="section__text anim-fade-up" style="--delay: 0.3s">Este libro no promete una crianza perfecta. Propone una forma más consciente de mirar lo que ocurre detrás de una pantalla, detrás de una decisión, detrás de una conversación.</p>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE EL AUTOR ===== -->
+    <section id="autor" class="section section--author">
+      <div class="section__inner section__inner--narrow">
+        <span class="eyebrow anim-fade-up">Sobre el autor</span>
+        <h2 class="section__title anim-fade-up" style="--delay: 0.1s">Andrés González Palacio</h2>
+        <p class="section__text anim-fade-up" style="--delay: 0.2s">Padre, emprendedor y autor de <em>El problema no son las pantallas.</em> Escribe desde una experiencia real de crianza, tecnología, migración, emprendimiento, error, autonomía y aprendizaje constante.</p>
+        <p class="section__text anim-fade-up" style="--delay: 0.3s">Este libro no nace desde la teoría. Nace desde la vida: desde observar, equivocarse, ajustar y volver a intentar.</p>
+      </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section id="cta-final" class="section section--cta-final">
+      <div class="section__inner section__inner--narrow cta-final__content">
+        <div class="section-divider anim-fade-up"><span class="section-divider__dot"></span></div>
+        <h2 class="section__title section__title--large anim-fade-up">No necesitas controlar más.</h2>
+        <p class="section__lead anim-fade-up" style="--delay: 0.1s">Necesitas entender mejor qué estás formando.</p>
+        <p class="hero__available anim-fade-up" style="--delay: 0.2s">Consigue tu ebook</p>
+        <div class="store-buttons store-buttons--large anim-fade-up" style="--delay: 0.25s">
+          <a href="#REEMPLAZAR_POR_LINK_AMAZON" target="_blank" rel="noopener" class="store-btn store-btn--lg" id="cta-btn-amazon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 01-.753.069c-1.06-.878-1.25-1.284-1.828-2.119-1.748 1.784-2.985 2.317-5.249 2.317-2.68 0-4.764-1.653-4.764-4.96 0-2.583 1.401-4.339 3.392-5.2 1.726-.76 4.139-.895 5.984-1.105v-.41c0-.756.058-1.65-.386-2.303-.386-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.566-.547.58l-3.065-.33c-.258-.058-.544-.266-.472-.66C6.025 1.464 9.11 0 11.862 0c1.407 0 3.243.373 4.351 1.438 1.407 1.307 1.272 3.05 1.272 4.948v4.482c0 1.348.559 1.94 1.084 2.67.185.261.224.574-.012.765-.592.494-1.645 1.415-2.224 1.93l-.189.162z"/><path d="M21.63 19.672C19.086 21.738 15.35 22.84 12.12 22.84c-4.548 0-8.644-1.682-11.745-4.48-.243-.22-.026-.52.267-.35 3.344 1.946 7.48 3.118 11.753 3.118 2.882 0 6.052-.597 8.972-1.834.44-.188.81.289.263.378z"/><path d="M22.69 18.404c-.332-.425-2.191-.2-3.025-.101-.254.03-.293-.19-.064-.35 1.482-1.04 3.912-.74 4.194-.392.284.352-.074 2.787-1.465 3.95-.214.18-.417.084-.322-.154.312-.779 1.013-2.527.682-2.953z"/></svg>
+            Amazon
+          </a>
+          <a href="#REEMPLAZAR_POR_LINK_GOOGLE_PLAY" target="_blank" rel="noopener" class="store-btn store-btn--lg" id="cta-btn-google">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.4l2.834 1.64a1 1 0 010 1.733l-2.834 1.64-2.532-2.533 2.532-2.48zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/></svg>
+            Google Play
+          </a>
+          <a href="#REEMPLAZAR_POR_LINK_APPLE_BOOKS" target="_blank" rel="noopener" class="store-btn store-btn--lg" id="cta-btn-apple">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Apple Books
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="site-footer" class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">&copy; 2026 Andrés González Palacio. Todos los derechos reservados.</p>
+      <div class="footer__stores">
+        <a href="#REEMPLAZAR_POR_LINK_AMAZON" target="_blank" rel="noopener" class="footer__link" id="footer-amazon">Amazon</a>
+        <span class="footer__sep">·</span>
+        <a href="#REEMPLAZAR_POR_LINK_GOOGLE_PLAY" target="_blank" rel="noopener" class="footer__link" id="footer-google">Google Play</a>
+        <span class="footer__sep">·</span>
+        <a href="#REEMPLAZAR_POR_LINK_APPLE_BOOKS" target="_blank" rel="noopener" class="footer__link" id="footer-apple">Apple Books</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
