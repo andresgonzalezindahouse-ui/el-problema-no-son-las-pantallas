@@ -316,7 +316,7 @@ function bindEvents() {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       track('click_adelanto');
-      if (sessionStorage.getItem(EMAIL_SESSION_KEY)) {
+      if (localStorage.getItem(EMAIL_SESSION_KEY)) {
         openReader();
       } else {
         openEmailModal();
@@ -351,7 +351,7 @@ function bindEvents() {
     const ok = await submitEmail(email);
 
     if (ok) {
-      sessionStorage.setItem(EMAIL_SESSION_KEY, email);
+      localStorage.setItem(EMAIL_SESSION_KEY, email);
       track('email_submitted', { email });
       closeEmailModal();
       setTimeout(openReader, 300);

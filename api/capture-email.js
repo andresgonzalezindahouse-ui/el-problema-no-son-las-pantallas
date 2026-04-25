@@ -95,7 +95,33 @@ export default async function handler(req, res) {
 
     const to = email.toLowerCase().trim();
 
-    // ── 1. Add contact to Leads audience ──────────────────────────
+    // ── 1. Check if contact already exists (avoid duplicate sequences) ──────
+    let isExistingContact = false;
+    try {
+      const checkRes = await fetch(
+        `https://api.resend.com/audiences/${LEADS_ID}/contacts`,
+        { headers: { Authorization: `Bearer ${RESEND_KEY}` } }
+      );
+      if (checkRes.ok) {
+        const { data } = await checkRes.json();
+        const found = (data || []).find(
+          (c) => c.email.toLowerCase() === to && !c.unsubscribed
+        );
+        if (found) {
+          isExistingContact = true;
+          console.log(`[capture-email] existing contact, skipping sequence: ${to}`);
+        }
+      }
+    } catch (e) {
+      console.warn('[capture-email] contact check failed, proceeding as new:', e.message);
+    }
+
+    if (isExistingContact) {
+      // Let them into the reader, don't re-send any emails
+      return res.status(200).json({ ok: true, email: to, existing: true });
+    }
+
+    // ── 2. Add contact to Leads audience ──────────────────────────
     try {
       await resendPost(`/audiences/${LEADS_ID}/contacts`, {
         email: to,
