@@ -73,7 +73,8 @@ function buildPayload(tpl, to, source, scheduledAt = null) {
     ],
   };
 
-  if (scheduledAt) payload.scheduledAt = scheduledAt;
+  // ⚠️ Resend REST API uses snake_case — NOT camelCase like the SDK
+  if (scheduledAt) payload.scheduled_at = scheduledAt;
   return payload;
 }
 
