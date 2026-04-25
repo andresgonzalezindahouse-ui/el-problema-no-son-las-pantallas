@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 Sitemap: https://raisingwithsense.com/sitemap.xml
