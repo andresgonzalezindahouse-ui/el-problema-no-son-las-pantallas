@@ -1,30 +1,39 @@
 /**
  * POST /api/capture-email
- * Adds contact to Resend audience and sends 5-email sequence
+ *
+ * — Sends Email 1 immediately
+ * — Schedules Emails 2–5 with proper delays (requires verified Resend domain)
+ * — Adds headers that help inbox placement (List-Unsubscribe, Reply-To)
+ * — Includes plain-text version so Gmail doesn't flag as promotional
  *
  * Env vars required:
  *   RESEND_API_KEY
- *   FROM_EMAIL          (e.g. andres@raisingwithsense.com)
+ *   FROM_EMAIL          verified domain address (e.g. andres@raisingwithsense.com)
  *   FROM_NAME           (e.g. Andrés González)
  *   RESEND_LEADS_ID     = 4c8803e8-b5cf-4bdb-85e0-12a63c6c6122
+ *   SITE_URL            = https://raisingwithsense.com
  */
 
 import { email1, email2, email3, email4, email5 } from './emails.js';
 
-const RESEND_KEY   = process.env.RESEND_API_KEY;
-const LEADS_ID     = process.env.RESEND_LEADS_ID || '4c8803e8-b5cf-4bdb-85e0-12a63c6c6122';
-const FROM_EMAIL   = process.env.FROM_EMAIL || 'andres@raisingwithsense.com';
-const FROM_NAME    = process.env.FROM_NAME  || 'Andrés González';
-const FROM         = `${FROM_NAME} <${FROM_EMAIL}>`;
+const RESEND_KEY = process.env.RESEND_API_KEY;
+const LEADS_ID   = process.env.RESEND_LEADS_ID || '4c8803e8-b5cf-4bdb-85e0-12a63c6c6122';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'andres@raisingwithsense.com';
+const FROM_NAME  = process.env.FROM_NAME  || 'Andrés González';
+const FROM       = `${FROM_NAME} <${FROM_EMAIL}>`;
+const SITE_URL   = process.env.SITE_URL   || 'https://raisingwithsense.com';
 
-// ── Helpers ─────────────────────────────────────────────────────
-function addDays(days) {
+// ── Scheduling helpers ───────────────────────────────────────────
+/** Returns ISO string N days from now, at 10:00 AM UTC */
+function scheduleAt(days) {
   const d = new Date();
-  d.setDate(d.getDate() + days);
+  d.setUTCDate(d.getUTCDate() + days);
+  d.setUTCHours(10, 0, 0, 0); // send at 10:00 AM UTC (decent time for ES/LatAm)
   return d.toISOString();
 }
 
-async function resend(path, body) {
+// ── Resend API wrapper ───────────────────────────────────────────
+async function resendPost(path, body) {
   const r = await fetch(`https://api.resend.com${path}`, {
     method: 'POST',
     headers: {
@@ -38,6 +47,36 @@ async function resend(path, body) {
   return data;
 }
 
+// ── Build email payload ──────────────────────────────────────────
+function buildPayload(tpl, to, source, scheduledAt = null) {
+  const unsubUrl = `${SITE_URL}/api/mark-as-buyer?e=${encodeURIComponent(to)}&unsub=1`;
+
+  const payload = {
+    from:     FROM,
+    to:       [to],
+    reply_to: FROM_EMAIL,
+    subject:  tpl.subject,
+    html:     tpl.html,
+    text:     tpl.text || tpl.preheader || tpl.subject,
+
+    // ── Inbox placement headers ─────────────────────────
+    headers: {
+      'List-Unsubscribe':       `<${unsubUrl}>`,
+      'List-Unsubscribe-Post':  'List-Unsubscribe=One-Click',
+      'X-Priority':             '3',
+      'X-Mailer':               'Antigravity/1.0',
+    },
+
+    tags: [
+      { name: 'source',   value: source },
+      { name: 'sequence', value: scheduledAt ? 'followup' : 'immediate' },
+    ],
+  };
+
+  if (scheduledAt) payload.scheduledAt = scheduledAt;
+  return payload;
+}
+
 // ── Handler ─────────────────────────────────────────────────────
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -47,7 +86,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { email, source = 'landing_book', timestamp } = req.body;
+    const { email, source = 'landing_book' } = req.body;
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ error: 'Invalid email' });
@@ -55,49 +94,52 @@ export default async function handler(req, res) {
 
     const to = email.toLowerCase().trim();
 
-    // 1. Add contact to Leads audience
+    // ── 1. Add contact to Leads audience ──────────────────────────
     try {
-      await resend(`/audiences/${LEADS_ID}/contacts`, {
+      await resendPost(`/audiences/${LEADS_ID}/contacts`, {
         email: to,
         unsubscribed: false,
       });
     } catch (e) {
-      // Contact might already exist — log but don't block
       console.warn('[capture-email] add contact:', e.message);
     }
 
-    // 2. Build email sequence (send all at once, Resend handles delivery timing)
-    const templates = [
-      { fn: email1, scheduledAt: null },           // immediate
-      { fn: email2, scheduledAt: addDays(1) },     // t+1 day
-      { fn: email3, scheduledAt: addDays(2) },     // t+2 days
-      { fn: email4, scheduledAt: addDays(4) },     // t+4 days
-      { fn: email5, scheduledAt: addDays(6) },     // t+6 days
+    // ── 2. Send Email 1 IMMEDIATELY ───────────────────────────────
+    try {
+      const tpl1 = email1(to);
+      const r1 = await resendPost('/emails', buildPayload(tpl1, to, source));
+      console.log('[capture-email] email 1 sent:', r1.id);
+    } catch (e) {
+      console.error('[capture-email] email 1 failed:', e.message);
+      // Still return 200 to the user — don't block the reader
+    }
+
+    // ── 3. Schedule emails 2–5 ────────────────────────────────────
+    // NOTE: scheduledAt requires a verified domain in Resend.
+    // If your domain is not verified yet, these will be sent immediately
+    // (which is why domain verification is required before go-live).
+    const scheduled = [
+      { fn: email2, days: 1  }, // t+1 day
+      { fn: email3, days: 2  }, // t+2 days
+      { fn: email4, days: 4  }, // t+4 days
+      { fn: email5, days: 6  }, // t+6 days
     ];
 
     const results = await Promise.allSettled(
-      templates.map(({ fn, scheduledAt }) => {
+      scheduled.map(({ fn, days }) => {
         const tpl = fn(to);
-        const payload = {
-          from: FROM,
-          to: [to],
-          subject: tpl.subject,
-          html: tpl.html,
-          tags: [{ name: 'source', value: source }],
-        };
-        if (scheduledAt) payload.scheduledAt = scheduledAt;
-        return resend('/emails', payload);
+        return resendPost('/emails', buildPayload(tpl, to, source, scheduleAt(days)));
       })
     );
 
-    // Log failures (non-fatal)
     results.forEach((r, i) => {
-      if (r.status === 'rejected') {
-        console.error(`[capture-email] email ${i + 1} failed:`, r.reason);
+      if (r.status === 'fulfilled') {
+        console.log(`[capture-email] email ${i + 2} scheduled (day +${scheduled[i].days}):`, r.value.id);
+      } else {
+        console.error(`[capture-email] email ${i + 2} failed:`, r.reason?.message);
       }
     });
 
-    console.log(`[capture-email] ✓ ${to} — sequence scheduled`);
     return res.status(200).json({ ok: true, email: to });
 
   } catch (err) {

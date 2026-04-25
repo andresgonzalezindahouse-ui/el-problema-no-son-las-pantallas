@@ -174,6 +174,30 @@ export function email1(email) {
     subject: 'Ya empezaste. Y eso ya dice algo.',
     preheader: 'Algo de lo que viste en ese capítulo te hizo sentido. Sigue.',
     html: emailWrapper({ preheader: 'Algo de lo que viste en ese capítulo te hizo sentido. Sigue.', body, email }),
+    text: `Ya empezaste. Y eso ya dice algo.
+
+Y eso ya dice algo.
+
+No porque leíste un capítulo, sino porque algo de lo que viste ahí te hizo sentido.
+
+La mayoría de personas no llega hasta ese punto. Prefieren quedarse con la versión cómoda: "las pantallas son el problema".
+
+Pero ya viste que no es así.
+
+Y si sigues leyendo, lo que viene no es más de lo mismo. Es donde empieza a cambiar la forma en la que entiendes todo esto.
+
+—
+
+Leer el libro completo:
+${AMAZON_URL}
+${GPLAY_URL}
+${APPLE_URL}
+
+—
+
+Esto no es un libro para terminarlo por terminarlo. Es un libro que te cambia la forma en la que ves lo que está pasando.
+
+Andrés González Palacio`,
   };
 }
 
@@ -201,6 +225,28 @@ export function email2(email) {
     subject: 'La mayoría de padres comete el mismo error.',
     preheader: 'No es cuánto tiempo. Es qué está pasando mientras está ahí.',
     html: emailWrapper({ preheader: 'No es cuánto tiempo. Es qué está pasando mientras está ahí.', body, email }),
+    text: `La mayoría de padres comete el mismo error.
+
+Miden el problema en horas.
+
+¿Cuánto tiempo? ¿Cuántas pantallas? ¿Cuánto debería reducir?
+
+Pero ese no es el problema.
+
+Puedes reducir el tiempo y aun así no estar formando nada importante. Puedes controlar y aun así perder lo esencial.
+
+El problema no es cuánto tiempo pasa frente a una pantalla. Es qué está pasando mientras está ahí.
+
+Y eso casi nadie lo está viendo.
+
+—
+
+Seguir leyendo:
+${AMAZON_URL}
+${GPLAY_URL}
+${APPLE_URL}
+
+Andrés González Palacio`,
   };
 }
 
@@ -225,6 +271,24 @@ export function email3(email) {
     subject: 'Si el capítulo te incomodó un poco… es buena señal.',
     preheader: 'Este libro no está diseñado para validar lo que ya piensas.',
     html: emailWrapper({ preheader: 'Este libro no está diseñado para validar lo que ya piensas.', body, email }),
+    text: `Si el capítulo te incomodó un poco… es buena señal.
+
+Porque este libro no está diseñado para validar lo que ya piensas.
+
+Está diseñado para cuestionarlo.
+
+No para decirte que lo estás haciendo mal. Sino para mostrarte que tal vez estás viendo el problema desde el ángulo equivocado.
+
+Y cuando cambias el ángulo… todo cambia.
+
+—
+
+Leer el libro completo:
+${AMAZON_URL}
+${GPLAY_URL}
+${APPLE_URL}
+
+Andrés González Palacio`,
   };
 }
 
@@ -250,6 +314,28 @@ export function email4(email) {
     subject: 'Esto no es algo que se rompe de un día para otro.',
     preheader: 'Decisiones que no toman. Criterio que no se forma. Dependencia que crece.',
     html: emailWrapper({ preheader: 'Decisiones que no toman. Criterio que no se forma. Dependencia que crece.', body, email }),
+    text: `Esto no es algo que se rompe de un día para otro.
+
+No es evidente. No es escandaloso. Por eso pasa desapercibido.
+
+Pero con el tiempo, se acumula.
+
+Decisiones que no toman. Criterio que no se forma. Dependencia que crece.
+
+Y cuando lo notas… ya es tarde para hacerlo fácil.
+
+Por eso este momento importa más de lo que parece.
+
+No es urgencia artificial. Es que hay cosas que solo se construyen a tiempo.
+
+—
+
+Leer el libro completo:
+${AMAZON_URL}
+${GPLAY_URL}
+${APPLE_URL}
+
+Andrés González Palacio`,
   };
 }
 
@@ -273,5 +359,25 @@ export function email5(email) {
     subject: 'No te voy a llenar la bandeja de entrada.',
     preheader: 'Si llegaste hasta aquí, ya sabes suficiente. El resto es decisión.',
     html: emailWrapper({ preheader: 'Si llegaste hasta aquí, ya sabes suficiente. El resto es decisión.', body, email }),
+    text: `No te voy a llenar la bandeja de entrada.
+
+Ni intentar convencerte con más correos.
+
+Si llegaste hasta aquí, ya sabes suficiente.
+
+Ya viste que el problema no es la pantalla. Y también sabes que ignorarlo no lo va a resolver.
+
+El resto ya no es información. Es decisión.
+
+—
+
+Leer el libro completo:
+${AMAZON_URL}
+${GPLAY_URL}
+${APPLE_URL}
+
+Si no lo haces ahora, probablemente lo pospongas. Y este tipo de cosas… no suelen resolverse solas.
+
+Andrés González Palacio`,
   };
 }
