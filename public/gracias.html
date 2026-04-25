@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gracias — El problema no son las pantallas</title>
+  <meta name="description" content="Gracias por leer El problema no son las pantallas." />
+  <meta name="robots" content="noindex" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --paper:   #f5f0e8;
+      --ink:     #1c1a16;
+      --amber:   #f5b942;
+      --amber-d: #a07c30;
+      --muted:   rgba(28,26,22,0.45);
+      --border:  rgba(28,26,22,0.12);
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    /* ── Layout ── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.25rem 4rem;
+    }
+
+    /* ── Ornament ── */
+    .ornament {
+      font-size: 2.5rem;
+      color: var(--amber-d);
+      opacity: 0.4;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.75rem 2.25rem;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .card__eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber-d);
+      margin-bottom: 1rem;
+    }
+
+    .card__title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card__subtitle {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    /* Divider */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      margin: 0 auto 2rem;
+    }
+
+    /* ── Review block ── */
+    .review-block {
+      background: rgba(245,185,66,0.06);
+      border: 1px solid rgba(245,185,66,0.2);
+      border-radius: 14px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 1.75rem;
+      text-align: left;
+    }
+
+    .review-block__label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber-d);
+      margin-bottom: 0.6rem;
+    }
+
+    .review-block__text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .review-block__text strong {
+      color: var(--amber-d);
+      font-weight: 700;
+    }
+
+    /* ── Store buttons ── */
+    .stores-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .stores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      border-color: rgba(28,26,22,0.22);
+    }
+
+    .store-btn--primary {
+      background: linear-gradient(135deg, #f5b942, #fbbf24);
+      color: #050608;
+      border-color: transparent;
+      box-shadow: 0 4px 14px rgba(245,185,66,0.28);
+    }
+
+    .store-btn--primary:hover {
+      box-shadow: 0 8px 24px rgba(245,185,66,0.4);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.4rem 0;
+    }
+
+    .back-link:hover { color: var(--ink); }
+
+    .back-link svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    .footer__brand {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      .card { padding: 2rem 1.25rem; border-radius: 16px; }
+      .stores { flex-direction: column; }
+      .store-btn { justify-content: center; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+<main class="page">
+
+  <div class="ornament" aria-hidden="true">✦</div>
+
+  <div class="card">
+    <p class="card__eyebrow">Confirmado</p>
+    <h1 class="card__title">Gracias por comprarlo.</h1>
+    <p class="card__subtitle">
+      Ojalá algo en estas páginas cambie la forma en la que ves lo que está pasando.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="review-block">
+      <p class="review-block__label">Un favor pequeño, con un impacto grande</p>
+      <p class="review-block__text">
+        Si cuando termines de leerlo sientes que valió la pena,
+        <strong>deja una reseña en la tienda donde lo compraste</strong>.
+        Cada opinión ayuda a que llegue a más padres que también lo necesitan.
+      </p>
+    </div>
+
+    <p class="stores-label">Dejar mi reseña en:</p>
+
+    <div class="stores">
+      <a href="#REEMPLAZAR_POR_LINK_RESENA_AMAZON"
+         target="_blank" rel="noopener"
+         class="store-btn store-btn--primary"
+         id="gracias-amazon">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+          <path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 01-.753.069c-1.06-.878-1.25-1.284-1.828-2.119-1.748 1.784-2.985 2.317-5.249 2.317-2.68 0-4.764-1.653-4.764-4.96 0-2.583 1.401-4.339 3.392-5.2 1.726-.76 4.139-.895 5.984-1.105v-.41c0-.756.058-1.65-.386-2.303-.386-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.566-.547.58l-3.065-.33c-.258-.058-.544-.266-.472-.66C6.025 1.464 9.11 0 11.862 0c1.407 0 3.243.373 4.351 1.438 1.407 1.307 1.272 3.05 1.272 4.948v4.482c0 1.348.559 1.94 1.084 2.67.185.261.224.574-.012.765-.592.494-1.645 1.415-2.224 1.93l-.189.162z"/><path d="M21.63 19.672C19.086 21.738 15.35 22.84 12.12 22.84c-4.548 0-8.644-1.682-11.745-4.48-.243-.22-.026-.52.267-.35 3.344 1.946 7.48 3.118 11.753 3.118 2.882 0 6.052-.597 8.972-1.834.44-.188.81.289.263.378z"/>
+        </svg>
+        Amazon
+      </a>
+
+      <a href="#REEMPLAZAR_POR_LINK_RESENA_GOOGLE"
+         target="_blank" rel="noopener"
+         class="store-btn"
+         id="gracias-google">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+          <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.4l2.834 1.64a1 1 0 010 1.733l-2.834 1.64-2.532-2.533 2.532-2.48zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/>
+        </svg>
+        Google Play
+      </a>
+
+      <a href="#REEMPLAZAR_POR_LINK_RESENA_APPLE"
+         target="_blank" rel="noopener"
+         class="store-btn"
+         id="gracias-apple">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        Apple Books
+      </a>
+    </div>
+
+    <!-- Back to email -->
+    <button class="back-link" onclick="window.history.back()" id="gracias-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Volver al correo
+    </button>
+  </div>
+
+  <footer class="footer">
+    <p class="footer__brand">El problema no son las pantallas · Andrés González Palacio</p>
+  </footer>
+
+</main>
+</body>
+</html>
