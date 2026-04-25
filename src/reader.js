@@ -139,17 +139,36 @@ function renderPage(index, direction = 'next', instant = false) {
   document.getElementById('rws-prev-bottom').disabled = index === 0;
   document.getElementById('rws-next-bottom').disabled = index === totalPages - 1;
 
-  // Remove old page with animation
-  const oldPage = container.querySelector('.reader-page');
-  if (oldPage && !instant) {
+  // ── Clean-up existing pages ─────────────────────────────────────
+  // querySelectorAll so we catch ANY accumulated pages, not just the first.
+  const existingPages = Array.from(container.querySelectorAll('.reader-page'));
+
+  if (existingPages.length > 0 && !instant) {
+    // If somehow multiple pages have piled up, nuke the extras immediately.
+    existingPages.slice(0, -1).forEach((p) => p.remove());
+
+    // Animate only the last visible page out.
+    const pageToExit = existingPages[existingPages.length - 1];
     const exitClass = direction === 'next' ? 'page-exit-left' : 'page-exit-right';
-    oldPage.classList.add(exitClass);
-    oldPage.addEventListener('animationend', () => oldPage.remove(), { once: true });
-  } else if (oldPage) {
-    oldPage.remove();
+    pageToExit.classList.add(exitClass);
+
+    // ⚠️ animationend can silently fail on mobile (power-save, Safari).
+    // The timeout guarantees the DOM is always cleaned up.
+    const fallbackTimer = setTimeout(() => {
+      if (pageToExit.parentNode) pageToExit.remove();
+    }, 450);
+
+    pageToExit.addEventListener('animationend', () => {
+      clearTimeout(fallbackTimer);
+      if (pageToExit.parentNode) pageToExit.remove();
+    }, { once: true });
+
+  } else {
+    // instant=true or no existing pages — remove immediately
+    existingPages.forEach((p) => p.remove());
   }
 
-  // Create new page
+  // ── Render new page ─────────────────────────────────────────────
   const page = document.createElement('div');
   page.className = 'reader-page';
   if (!instant) {
