@@ -4,6 +4,7 @@
    =================================================================== */
 
 import './style.css';
+import { initReader } from './reader.js';
 
 // ── Intersection Observer for scroll animations ─────────────────
 function initScrollAnimations() {
@@ -164,4 +165,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initCountUp();
   initHeroGrain();
+  initReader();
 });
