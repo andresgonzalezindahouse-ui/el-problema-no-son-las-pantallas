@@ -408,76 +408,168 @@
 .page-enter-right { animation: enterFromRight 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .page-enter-left  { animation: enterFromLeft 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-/* ── Reader Typography ─────────────────────────────────────────── */
+/* ── Reader Typography — Book Edition ─────────────────────────── */
 .reader-page p {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.08rem, 2.4vw, 1.2rem);
   font-weight: 400;
   line-height: 1.85;
-  color: #1a1a2e;
-  margin-bottom: 1.4em;
+  color: #1c1a16;
+  margin-bottom: 1.5em;
+  text-indent: 1.6em;
 }
 
-.reader-chapter-header {
-  margin-bottom: 2.5rem;
+/* Book paragraph — explicit class (overrides generic p) */
+.book-p {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.08rem, 2.4vw, 1.22rem);
+  font-weight: 400;
+  line-height: 1.9;
+  color: #1c1a16;
+  margin: 0 0 1.4em;
+  text-indent: 1.6em;
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* No indent for first paragraph after heading / section */
+.book-p--first,
+.reader-chapter-header + .book-p {
+  text-indent: 0;
+}
+
+/* Drop cap — first paragraph of the chapter */
+.book-p--drop-cap {
+  text-indent: 0;
+}
+
+.book-p--drop-cap::first-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 4.2em;
+  font-weight: 700;
+  line-height: 0.8;
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  color: #a07c30;
+}
+
+/* Pivot line — "El punto es lo que pasa dentro de ella." */
+.book-pivot {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  font-style: italic;
+  font-weight: 600;
+  color: #1c1a16;
   text-align: center;
+  text-indent: 0;
+  line-height: 1.5;
+  margin: 2rem auto 2.5rem;
+  max-width: 52ch;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(160, 124, 48, 0.25);
+  border-bottom: 1px solid rgba(160, 124, 48, 0.25);
+  position: relative;
+}
+
+.book-pivot::before,
+.book-pivot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 1px;
+  background: #a07c30;
+  opacity: 0.5;
+}
+.book-pivot::before { top: -4px; }
+.book-pivot::after  { bottom: -4px; }
+
+/* Left-aligned pivot variant */
+.book-pivot--left {
+  text-align: left;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  padding: 1.25rem 1.5rem;
+  max-width: 60ch;
+}
+
+/* Ornamental section break ★ */
+.book-ornament {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.1rem;
+  color: rgba(160, 124, 48, 0.45);
+  letter-spacing: 0.6em;
+  user-select: none;
+}
+
+/* ── Chapter header ────────────────────────────────────────────── */
+.reader-chapter-header {
+  margin-bottom: 2.25rem;
+  text-align: center;
+  padding-top: 0.5rem;
 }
 
 .reader-eyebrow {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #a07c30;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
 }
 
 .reader-chapter-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 600;
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  font-weight: 700;
   color: #0d0d1a;
   line-height: 1.2;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin-bottom: 1.5rem;
 }
 
 .reader-chapter-divider {
-  width: 48px;
+  width: 40px;
   height: 2px;
   background: linear-gradient(90deg, transparent, #f5b942, transparent);
   margin: 0 auto;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .reader-subhead {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.15rem, 2.8vw, 1.45rem);
   font-weight: 600;
+  font-style: italic;
   color: #0d0d1a;
-  line-height: 1.3;
+  line-height: 1.35;
   margin-bottom: 1.25em;
   margin-top: 0.5em;
+  text-indent: 0;
 }
 
 .reader-pullquote {
-  margin: 2rem 0;
-  padding: 1.5rem 2rem;
+  margin: 1.75rem auto;
+  padding: 1.25rem 1.75rem;
   border-left: 3px solid #f5b942;
-  background: rgba(245, 185, 66, 0.06);
+  background: rgba(245, 185, 66, 0.05);
   border-radius: 0 12px 12px 0;
+  max-width: 58ch;
 }
 
 .reader-pullquote p {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.05rem, 2.6vw, 1.2rem);
   font-style: italic;
   font-weight: 500;
   color: #3a2e00;
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0;
+  text-indent: 0;
 }
 
 .reader-chapter-end {
@@ -489,20 +581,117 @@
 }
 
 .reader-chapter-end p {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(26, 26, 46, 0.4);
+  color: rgba(26, 26, 46, 0.35);
   white-space: nowrap;
   margin: 0;
+  text-indent: 0;
 }
 
 .reader-chapter-end__line {
   flex: 1;
   height: 1px;
-  background: rgba(26, 26, 46, 0.12);
+  background: rgba(26, 26, 46, 0.1);
 }
+
+/* ── Closing page ──────────────────────────────────────────────── */
+.reader-closing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 1.5rem 2rem;
+  min-height: 100%;
+}
+
+.reader-closing__ornament {
+  font-size: 2.5rem;
+  color: rgba(160, 124, 48, 0.3);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.reader-closing__quote {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  font-style: italic;
+  font-weight: 500;
+  color: #1c1a16;
+  line-height: 1.65;
+  margin: 0 0 2.5rem;
+  max-width: 44ch;
+  text-indent: 0;
+}
+
+.reader-closing__cta-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 22, 0.45);
+  margin-bottom: 1rem;
+  text-indent: 0;
+}
+
+.reader-closing__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+/* Store CTA buttons */
+.reader-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.35rem;
+  background: #fff;
+  color: #1c1a16;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(28, 26, 22, 0.15);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.reader-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  border-color: rgba(28, 26, 22, 0.25);
+}
+
+.reader-cta-btn--primary {
+  background: linear-gradient(135deg, #f5b942 0%, #fbbf24 100%);
+  color: #050608;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(245, 185, 66, 0.3);
+}
+
+.reader-cta-btn--primary:hover {
+  box-shadow: 0 8px 28px rgba(245, 185, 66, 0.45);
+}
+
+@media (max-width: 440px) {
+  .reader-closing__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .reader-cta-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 
 /* ── Gating Overlay ────────────────────────────────────────────── */
 .reader-gate {
