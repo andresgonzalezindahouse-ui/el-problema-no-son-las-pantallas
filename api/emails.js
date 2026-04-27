@@ -6,7 +6,7 @@
 const SITE_URL    = 'https://raisingwithsense.com';
 const AMAZON_URL  = process.env.AMAZON_URL  || 'https://www.amazon.com';
 const GPLAY_URL   = process.env.GPLAY_URL   || 'https://play.google.com';
-const APPLE_URL   = process.env.APPLE_URL   || 'https://books.apple.com';
+const APPLE_URL   = process.env.APPLE_URL   || 'http://books.apple.com/us/book/id6763953364';
 
 // ── Shared partials ────────────────────────────────────────────────
 
