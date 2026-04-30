@@ -6,38 +6,132 @@
   <script>window.dataLayer = window.dataLayer || [];</script>
 
   <!-- SEO -->
-  <title>El problema no son las pantallas | Andrés González Palacio</title>
-  <meta name="description" content="Un ebook para padres que quieren criar con criterio en un mundo digital. Una forma distinta de entender pantallas, autonomía, tecnología y crianza." />
+  <title>El problema no son las pantallas | Raising with Sense</title>
+  <meta name="description" content="Un libro de Andrés González Palacio sobre crianza, tecnología y pensamiento crítico. No se trata de apagar las pantallas, sino de formar criterio en un mundo digital." />
+  <meta name="author" content="Andrés González Palacio" />
+  <meta name="keywords" content="el problema no son las pantallas, libro sobre niños y pantallas, crianza y tecnología, pantallas en niños, crianza digital, educación y tecnología en niños, pensamiento crítico en niños, cómo criar hijos con criterio, uso de pantallas en niños, niños y mundo digital" />
+  <meta name="theme-color" content="#050608" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="El problema no son las pantallas" />
-  <meta property="og:site_name" content="Andrés González Palacio" />
-  <meta property="og:description" content="Un libro para padres que quieren criar con criterio en un mundo digital. Una forma distinta de entender pantallas, autonomía y crianza." />
+  <meta property="og:type" content="book" />
+  <meta property="og:title" content="El problema no son las pantallas — Una forma distinta de criar en un mundo que cambió para siempre" />
+  <meta property="og:site_name" content="Raising with Sense" />
+  <meta property="og:description" content="Un libro de Andrés González Palacio sobre crianza, tecnología y pensamiento crítico. No se trata de apagar las pantallas, sino de formar criterio en un mundo digital." />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:image" content="https://raisingwithsense.com/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://raisingwithsense.com/" />
+  <meta property="book:author" content="Andrés González Palacio" />
+  <meta property="book:tag" content="crianza" />
+  <meta property="book:tag" content="tecnología" />
+  <meta property="book:tag" content="pantallas" />
+  <meta property="book:tag" content="pensamiento crítico" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="El problema no son las pantallas" />
-  <meta name="twitter:description" content="Un libro para padres que quieren criar con criterio en un mundo digital." />
+  <meta name="twitter:title" content="El problema no son las pantallas | Raising with Sense" />
+  <meta name="twitter:description" content="Un libro de Andrés González Palacio sobre crianza, tecnología y pensamiento crítico. No se trata de apagar las pantallas, sino de formar criterio en un mundo digital." />
   <meta name="twitter:image" content="https://raisingwithsense.com/og-image.jpg" />
 
-  <!-- Canonical -->
+  <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://raisingwithsense.com/" />
+  <link rel="alternate" hreflang="es" href="https://raisingwithsense.com/" />
 
-  <!-- Fonts -->
+  <!-- Fonts (only Cormorant Garamond + Inter — Playfair Display removed for performance) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/portada.jpg" fetchpriority="high" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <link rel="stylesheet" href="/src/style.css" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://raisingwithsense.com/#website",
+        "url": "https://raisingwithsense.com/",
+        "name": "Raising with Sense",
+        "description": "Plataforma editorial sobre crianza, tecnología, pensamiento crítico y desarrollo infantil en un mundo digital.",
+        "inLanguage": "es",
+        "publisher": {
+          "@id": "https://raisingwithsense.com/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://raisingwithsense.com/#webpage",
+        "url": "https://raisingwithsense.com/",
+        "name": "El problema no son las pantallas | Raising with Sense",
+        "description": "Un libro de Andrés González Palacio sobre crianza, tecnología y pensamiento crítico. No se trata de apagar las pantallas, sino de formar criterio en un mundo digital.",
+        "isPartOf": {
+          "@id": "https://raisingwithsense.com/#website"
+        },
+        "about": {
+          "@id": "https://raisingwithsense.com/#book"
+        },
+        "inLanguage": "es"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://raisingwithsense.com/#organization",
+        "name": "Raising with Sense",
+        "url": "https://raisingwithsense.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://raisingwithsense.com/og-image.jpg"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://raisingwithsense.com/#author",
+        "name": "Andrés González Palacio",
+        "description": "Padre, emprendedor y autor de El problema no son las pantallas. Escribe desde una experiencia real de crianza, tecnología, migración, emprendimiento, error, autonomía y aprendizaje constante.",
+        "url": "https://raisingwithsense.com/"
+      },
+      {
+        "@type": "Book",
+        "@id": "https://raisingwithsense.com/#book",
+        "name": "El problema no son las pantallas",
+        "alternateName": "Una forma distinta de criar en un mundo que cambió para siempre",
+        "author": {
+          "@id": "https://raisingwithsense.com/#author"
+        },
+        "publisher": {
+          "@id": "https://raisingwithsense.com/#organization"
+        },
+        "inLanguage": "es",
+        "bookFormat": "EBook",
+        "genre": ["Parenting", "Technology", "Education", "Personal Development"],
+        "description": "Un libro sobre crianza, tecnología y pensamiento crítico. No se trata de apagar las pantallas, sino de formar criterio en un mundo digital.",
+        "image": "https://raisingwithsense.com/portada.jpg",
+        "url": "https://raisingwithsense.com/",
+        "offers": [
+          {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "url": "http://books.apple.com/us/book/id6763953364",
+            "priceCurrency": "USD",
+            "seller": {
+              "@type": "Organization",
+              "name": "Apple Books"
+            }
+          }
+        ],
+        "keywords": "crianza, tecnología, pantallas, pensamiento crítico, niños, educación digital, autonomía, desarrollo infantil"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -85,7 +179,7 @@
         </div>
         <div class="hero__cover anim-scale-in">
           <div class="hero__cover-glow"></div>
-          <img src="/portada.jpg" alt="Portada del libro El problema no son las pantallas" width="420" height="630" loading="eager" />
+          <img src="/portada.jpg" alt="Portada del libro El problema no son las pantallas de Andrés González Palacio — crianza, tecnología y pensamiento crítico" width="420" height="630" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </section>
@@ -160,6 +254,7 @@
           <img src="/deco-tablet.jpg" alt="" aria-hidden="true" loading="lazy" />
         </div>
         <span class="eyebrow anim-fade-up">Lo que propone este libro</span>
+        <h2 class="section__title anim-fade-up" style="--delay: 0.05s">Cuatro pilares para criar con criterio</h2>
         <div class="cards-grid cards-grid--4">
           <article class="card card--pillar anim-fade-up" style="--delay: 0.1s" id="card-criterio">
             <div class="card__icon card__icon--amber">
@@ -193,11 +288,22 @@
       </div>
     </section>
 
+    <!-- ===== SOBRE EL LIBRO ===== -->
+    <section id="sobre-el-libro" class="section section--about-book">
+      <div class="section__inner section__inner--narrow">
+        <span class="eyebrow anim-fade-up">Sobre el libro</span>
+        <h2 class="section__title anim-fade-up" style="--delay: 0.1s">Un libro sobre crianza, tecnología y pensamiento crítico</h2>
+        <p class="section__text anim-fade-up" style="--delay: 0.2s">El problema no son las pantallas es un libro sobre crianza, tecnología y pensamiento crítico. Parte de una idea sencilla pero incómoda: limitar el tiempo frente a una pantalla no basta si no estamos formando criterio.</p>
+        <p class="section__text anim-fade-up" style="--delay: 0.3s">A través de una experiencia real, el libro propone una forma distinta de entender el uso de la tecnología en la infancia. No como enemigo, sino como un entorno que puede amplificar intereses, habilidades, autonomía y aprendizaje cuando existe intención.</p>
+      </div>
+    </section>
+
     <!-- ===== FRAGMENTO ===== -->
     <section id="fragmento" class="section section--fragment">
       <div class="section__inner section__inner--narrow">
         <span class="eyebrow anim-fade-up">Fragmento</span>
-        <div class="section-divider anim-fade-up" style="--delay: 0.05s"><span class="section-divider__dot"></span></div>
+        <h2 class="section__title anim-fade-up" style="--delay: 0.05s">Lee un adelanto</h2>
+        <div class="section-divider anim-fade-up" style="--delay: 0.08s"><span class="section-divider__dot"></span></div>
         <blockquote class="quote anim-fade-up" style="--delay: 0.1s">
           <p>"El problema es que casi siempre nos quedamos en la superficie. Vemos la pantalla y asumimos que sabemos lo que está pasando. Pero no lo sabemos."</p>
         </blockquote>

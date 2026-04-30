@@ -663,6 +663,20 @@ a {
 }
 
 
+/* ── Section: About the Book ───────────────────────────────────── */
+.section--about-book {
+  padding: 7rem 1.5rem;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(245, 185, 66, 0.04) 0%, transparent 100%),
+    var(--bg-primary);
+  text-align: center;
+}
+
+.section--about-book .section__title {
+  color: var(--amber);
+}
+
+
 /* ── Section: Fragment ─────────────────────────────────────────── */
 .section--fragment {
   padding: 7rem 1.5rem;
