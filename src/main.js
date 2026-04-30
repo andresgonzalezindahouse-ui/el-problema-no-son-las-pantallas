@@ -103,6 +103,9 @@ function initSmoothScroll() {
       const href = link.getAttribute('href');
       if (href === '#' || href.includes('REEMPLAZAR')) return;
 
+      // Skip fragment links — handled by the reader module
+      if (href === '#fragmento' || link.id === 'hero-fragment-btn') return;
+
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
@@ -156,40 +159,54 @@ function initHeroGrain() {
   // for future enhancements like canvas-based particles
 }
 
-
 // ── Lazy-load reader module on first interaction ────────────────
+let readerModule = null;
+
 function initReaderLazy() {
-  let loaded = false;
   const triggers = document.querySelectorAll('#hero-fragment-btn, a[href="#fragmento"]');
+  
   triggers.forEach((el) => {
-    el.addEventListener('click', async () => {
-      if (!loaded) {
-        loaded = true;
-        const { initReader } = await import('./reader.js');
-        initReader();
+    el.addEventListener('click', async (e) => {
+      // ALWAYS prevent default to avoid scrolling to #fragmento section
+      e.preventDefault();
+      e.stopPropagation();
+      
+      try {
+        // Load module if not yet loaded
+        if (!readerModule) {
+          readerModule = await import('./reader.js');
+          readerModule.initReader();
+        }
+        // Always open the appropriate modal on click
+        if (localStorage.getItem(readerModule.EMAIL_SESSION_KEY)) {
+          readerModule.openReader();
+        } else {
+          readerModule.openEmailModal();
+        }
+      } catch (err) {
+        console.error('Error loading reader:', err);
       }
-    }, { once: false });
+    });
   });
-  // Also load after idle if user hasn't clicked yet
+
+  // Preload reader module after idle so clicks feel instant
+  const preload = () => {
+    if (!readerModule) {
+      import('./reader.js').then((mod) => {
+        readerModule = mod;
+        readerModule.initReader();
+      }).catch(() => {});
+    }
+  };
+
   if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-      if (!loaded) {
-        loaded = true;
-        import('./reader.js').then(({ initReader }) => initReader());
-      }
-    }, { timeout: 4000 });
+    requestIdleCallback(preload, { timeout: 4000 });
   } else {
-    setTimeout(() => {
-      if (!loaded) {
-        loaded = true;
-        import('./reader.js').then(({ initReader }) => initReader());
-      }
-    }, 4000);
+    setTimeout(preload, 4000);
   }
 }
 
 
-// ── Initialize everything on DOM ready ──────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initParallax();

@@ -4,6 +4,10 @@
 
 import './reader.css';
 
+const AMAZON_LINK = 'https://www.amazon.com';
+const GPLAY_LINK  = 'https://play.google.com';
+const APPLE_LINK  = 'http://books.apple.com/us/book/id6763953364';
+
 // ── Analytics ──────────────────────────────────────────────────
 function track(event, data = {}) {
   const payload = { event, ...data, ts: new Date().toISOString() };
@@ -59,15 +63,15 @@ const PAGES = [
     <p class="reader-closing__quote">"Esto es solo el comienzo.<br>Lo que sigue no es más información.<br>Es donde todo cambia."</p>
     <p class="reader-closing__cta-label">Leer el libro completo en:</p>
     <div class="reader-closing__buttons">
-      <a href="#REEMPLAZAR_POR_LINK_AMAZON" target="_blank" rel="noopener" class="reader-cta-btn reader-cta-btn--primary" id="reader-closing-amazon">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 01-.753.069c-1.06-.878-1.25-1.284-1.828-2.119-1.748 1.784-2.985 2.317-5.249 2.317-2.68 0-4.764-1.653-4.764-4.96 0-2.583 1.401-4.339 3.392-5.2 1.726-.76 4.139-.895 5.984-1.105v-.41c0-.756.058-1.65-.386-2.303-.386-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.566-.547.58l-3.065-.33c-.258-.058-.544-.266-.472-.66C6.025 1.464 9.11 0 11.862 0c1.407 0 3.243.373 4.351 1.438 1.407 1.307 1.272 3.05 1.272 4.948v4.482c0 1.348.559 1.94 1.084 2.67.185.261.224.574-.012.765-.592.494-1.645 1.415-2.224 1.93l-.189.162z"/><path d="M21.63 19.672C19.086 21.738 15.35 22.84 12.12 22.84c-4.548 0-8.644-1.682-11.745-4.48-.243-.22-.026-.52.267-.35 3.344 1.946 7.48 3.118 11.753 3.118 2.882 0 6.052-.597 8.972-1.834.44-.188.81.289.263.378z"/></svg>
+      <a href="${AMAZON_LINK}" target="_blank" rel="noopener" class="reader-cta-btn reader-cta-btn--primary" id="reader-closing-amazon">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-2.184 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 01-.753.069c-1.06-.878-1.25-1.284-1.828-2.119-1.748 1.784-2.985 2.317-5.249 2.317-2.68 0-4.764-1.653-4.764-4.96 0-2.583 1.401-4.339 3.392-5.2 1.726-.76 4.139-.895 5.984-1.105v-.41c0-.756.058-1.65-.386-2.303-.386-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.566-.547.58l-3.065-.33c-.258-.058-.544-.266-.472-.66C6.025 1.464 9.11 0 11.862 0c1.407 0 3.243.373 4.351 1.438 1.407 1.307 1.272 3.05 1.272 4.948v4.482c0 1.348.559 1.94 1.084 2.67.185.261.224.574-.012.765-.592.494-1.645 1.415-2.224 1.93l-.189.162z"/><path d="M21.63 19.672C19.086 21.738 15.35 22.84 12.12 22.84c-4.548 0-8.644-1.682-11.745-4.48-.243-.22-.026-.52.267-.35 3.344 1.946 7.48 3.118 11.753 3.118 2.882 0 6.052-.597 8.972-1.834.44-.188.81.289.263.378z"/></svg>
         Amazon
       </a>
-      <a href="#REEMPLAZAR_POR_LINK_GOOGLE_PLAY" target="_blank" rel="noopener" class="reader-cta-btn" id="reader-closing-google">
+      <a href="${GPLAY_LINK}" target="_blank" rel="noopener" class="reader-cta-btn" id="reader-closing-google">
         <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.4l2.834 1.64a1 1 0 010 1.733l-2.834 1.64-2.532-2.533 2.532-2.48zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/></svg>
         Google Play
       </a>
-      <a href="#REEMPLAZAR_POR_LINK_APPLE_BOOKS" target="_blank" rel="noopener" class="reader-cta-btn" id="reader-closing-apple">
+      <a href="${APPLE_LINK}" target="_blank" rel="noopener" class="reader-cta-btn" id="reader-closing-apple">
         <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Apple Books
       </a>
@@ -77,7 +81,7 @@ const PAGES = [
 
 // Gate fires when navigating TO this index (0-based). 6 of 10 = 60% free.
 const GATE_AT_PAGE = 6;
-const EMAIL_SESSION_KEY = 'rws_email_submitted';
+export const EMAIL_SESSION_KEY = 'rws_email_submitted';
 
 let currentPage = 0;
 let gateShown = false;
@@ -119,7 +123,7 @@ function renderDots(activeIndex) {
 }
 
 // ── Modals: email gate ──────────────────────────────────────────
-function openEmailModal() {
+export function openEmailModal() {
   document.getElementById('rws-modal-email').classList.add('is-open');
   document.body.classList.add('modal-open');
   setTimeout(() => document.getElementById('rws-email-input')?.focus(), 350);
@@ -131,7 +135,7 @@ function closeEmailModal() {
 }
 
 // ── Modals: reader ─────────────────────────────────────────────
-function openReader() {
+export function openReader() {
   currentPage = 0;
   gateShown = false;
   renderPage(0, 'next', true);
@@ -303,7 +307,7 @@ function buildModals() {
           <div class="reader-gate__card">
             <p class="reader-gate__title">Si llegaste hasta aquí,<br>ya entendiste algo importante.</p>
             <p class="reader-gate__sub">El resto no es más de lo mismo.<br>Es donde todo cambia.</p>
-            <a href="#REEMPLAZAR_POR_LINK_AMAZON" target="_blank" rel="noopener"
+            <a href="${AMAZON_LINK}" target="_blank" rel="noopener"
                class="reader-gate__btn-primary" id="rws-gate-amazon">
               Leer el libro completo en Amazon
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14">
@@ -402,6 +406,7 @@ function bindEvents() {
 
 // ── Init ───────────────────────────────────────────────────────
 export function initReader() {
+  if (document.getElementById('rws-modal-email')) return; // Avoid duplicate injections
   buildModals();
   bindEvents();
 }
