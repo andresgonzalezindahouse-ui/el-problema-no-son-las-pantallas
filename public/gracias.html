@@ -231,6 +231,127 @@
       .stores { flex-direction: column; }
       .store-btn { justify-content: center; width: 100%; }
     }
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+      padding: 1.25rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--ink);
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .modal-input:focus {
+      outline: none;
+      border-color: var(--amber);
+    }
+
+    .modal-btn {
+      background: linear-gradient(135deg, #f5b942, #fbbf24);
+      color: #050608;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .modal-btn:hover {
+      box-shadow: 0 4px 14px rgba(245,185,66,0.3);
+    }
+
+    .modal-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .modal-success {
+      display: none;
+      color: #2e7d32;
+      font-weight: 500;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -258,25 +379,23 @@
     <p class="stores-label">Dejar mi reseña en:</p>
 
     <div class="stores">
-      <a href="#REEMPLAZAR_POR_LINK_RESENA_AMAZON"
-         target="_blank" rel="noopener"
+      <button type="button"
          class="store-btn store-btn--primary"
-         id="gracias-amazon">
+         onclick="openModal()">
         <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
           <path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705a.66.66 0 01-.753.069c-1.06-.878-1.25-1.284-1.828-2.119-1.748 1.784-2.985 2.317-5.249 2.317-2.68 0-4.764-1.653-4.764-4.96 0-2.583 1.401-4.339 3.392-5.2 1.726-.76 4.139-.895 5.984-1.105v-.41c0-.756.058-1.65-.386-2.303-.386-.579-1.124-.818-1.775-.818-1.205 0-2.277.618-2.54 1.897-.054.285-.261.566-.547.58l-3.065-.33c-.258-.058-.544-.266-.472-.66C6.025 1.464 9.11 0 11.862 0c1.407 0 3.243.373 4.351 1.438 1.407 1.307 1.272 3.05 1.272 4.948v4.482c0 1.348.559 1.94 1.084 2.67.185.261.224.574-.012.765-.592.494-1.645 1.415-2.224 1.93l-.189.162z"/><path d="M21.63 19.672C19.086 21.738 15.35 22.84 12.12 22.84c-4.548 0-8.644-1.682-11.745-4.48-.243-.22-.026-.52.267-.35 3.344 1.946 7.48 3.118 11.753 3.118 2.882 0 6.052-.597 8.972-1.834.44-.188.81.289.263.378z"/>
         </svg>
         Amazon
-      </a>
+      </button>
 
-      <a href="#REEMPLAZAR_POR_LINK_RESENA_GOOGLE"
-         target="_blank" rel="noopener"
+      <button type="button"
          class="store-btn"
-         id="gracias-google">
+         onclick="openModal()">
         <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15">
           <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.4l2.834 1.64a1 1 0 010 1.733l-2.834 1.64-2.532-2.533 2.532-2.48zM5.864 2.658L16.8 8.99l-2.302 2.302-8.635-8.635z"/>
         </svg>
         Google Play
-      </a>
+      </button>
 
       <a href="http://books.apple.com/us/book/id6763953364"
          target="_blank" rel="noopener"
@@ -296,5 +415,81 @@
   </footer>
 
 </main>
+
+<div class="modal-overlay" id="waitlistModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2 class="modal-title">Pronto en tiendas</h2>
+    <p class="modal-desc">Déjanos tu correo y te avisaremos en cuanto el libro esté disponible en Amazon y Google Play.</p>
+    
+    <form class="modal-form" id="waitlistForm">
+      <input type="email" id="waitlistEmail" class="modal-input" placeholder="Tu correo electrónico" required />
+      <button type="submit" class="modal-btn" id="waitlistSubmit">Avisarme</button>
+      <div class="modal-success" id="waitlistSuccess">¡Gracias! Te avisaremos pronto.</div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('waitlistModal');
+  const form = document.getElementById('waitlistForm');
+  const submitBtn = document.getElementById('waitlistSubmit');
+  const successMsg = document.getElementById('waitlistSuccess');
+
+  function openModal() {
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      form.reset();
+      successMsg.style.display = 'none';
+      form.querySelector('.modal-input').style.display = 'block';
+      submitBtn.style.display = 'block';
+    }, 300);
+  }
+
+  // Close modal when clicking outside
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.submitter && e.submitter.blur();
+    e.preventDefault();
+    
+    const email = document.getElementById('waitlistEmail').value;
+    if (!email) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.ok) {
+        form.querySelector('.modal-input').style.display = 'none';
+        submitBtn.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        alert('Hubo un error. Por favor intenta de nuevo.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Avisarme';
+      }
+    } catch (err) {
+      alert('Hubo un error. Por favor intenta de nuevo.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Avisarme';
+    }
+  });
+</script>
+
 </body>
 </html>
