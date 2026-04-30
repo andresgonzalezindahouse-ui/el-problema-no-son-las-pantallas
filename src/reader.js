@@ -338,13 +338,8 @@ function buildModals() {
 
 // ── Wire up events ────────────────────────────────────────────
 function bindEvents() {
-  document.querySelectorAll('#hero-fragment-btn, a[href="#fragmento"]').forEach((el) => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      track('click_adelanto');
-      if (localStorage.getItem(EMAIL_SESSION_KEY)) { openReader(); } else { openEmailModal(); }
-    });
-  });
+  // NOTE: Trigger button (#hero-fragment-btn) clicks are handled by main.js initReaderLazy().
+  // Only internal reader/modal controls are wired here.
 
   document.getElementById('rws-email-close').addEventListener('click', closeEmailModal);
   document.getElementById('rws-modal-email').addEventListener('click', (e) => {
