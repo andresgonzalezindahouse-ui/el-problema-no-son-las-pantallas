@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const RESEND_KEY = process.env.RESEND_API_KEY;
-  const LEADS_ID = process.env.RESEND_LEADS_ID || '4c8803e8-b5cf-4bdb-85e0-12a63c6c6122';
+  const WAITLIST_ID = '6daf1ff9-0ebb-4d02-8d06-ac41a7c6bfbb';
 
   try {
     const { email } = req.body;
@@ -17,8 +17,8 @@ export default async function handler(req, res) {
 
     const to = email.toLowerCase().trim();
 
-    // Add contact to Leads audience
-    const r = await fetch(`https://api.resend.com/audiences/${LEADS_ID}/contacts`, {
+    // Add contact to Waitlist audience
+    const r = await fetch(`https://api.resend.com/audiences/${WAITLIST_ID}/contacts`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${RESEND_KEY}`,
