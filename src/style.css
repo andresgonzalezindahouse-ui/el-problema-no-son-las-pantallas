@@ -1013,6 +1013,21 @@ a {
   transform: translateY(0);
 }
 
+/* Hero elements: visible immediately (above-the-fold, improves Speed Index) */
+.hero .anim-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+  animation: heroFadeUp var(--duration) var(--ease-out) backwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
 /* Scale in (book cover) */
 .anim-scale-in {
   opacity: 0;
@@ -1026,6 +1041,20 @@ a {
 .anim-scale-in.is-visible {
   opacity: 1;
   transform: scale(1);
+}
+
+/* Hero cover: visible immediately */
+.hero .anim-scale-in {
+  opacity: 1;
+  transform: scale(1);
+  animation: heroScaleIn 0.9s var(--ease-out) 0.3s backwards;
+}
+
+@keyframes heroScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
 }
 
 /* Parallax placeholder — JS drives translateY */

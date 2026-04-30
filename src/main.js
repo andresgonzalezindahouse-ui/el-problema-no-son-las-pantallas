@@ -4,7 +4,7 @@
    =================================================================== */
 
 import './style.css';
-import { initReader } from './reader.js';
+// reader.js is lazy-loaded on demand (see initReader below)
 
 // ── Intersection Observer for scroll animations ─────────────────
 function initScrollAnimations() {
@@ -157,6 +157,38 @@ function initHeroGrain() {
 }
 
 
+// ── Lazy-load reader module on first interaction ────────────────
+function initReaderLazy() {
+  let loaded = false;
+  const triggers = document.querySelectorAll('#hero-fragment-btn, a[href="#fragmento"]');
+  triggers.forEach((el) => {
+    el.addEventListener('click', async () => {
+      if (!loaded) {
+        loaded = true;
+        const { initReader } = await import('./reader.js');
+        initReader();
+      }
+    }, { once: false });
+  });
+  // Also load after idle if user hasn't clicked yet
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      if (!loaded) {
+        loaded = true;
+        import('./reader.js').then(({ initReader }) => initReader());
+      }
+    }, { timeout: 4000 });
+  } else {
+    setTimeout(() => {
+      if (!loaded) {
+        loaded = true;
+        import('./reader.js').then(({ initReader }) => initReader());
+      }
+    }, 4000);
+  }
+}
+
+
 // ── Initialize everything on DOM ready ──────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
@@ -165,5 +197,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initCountUp();
   initHeroGrain();
-  initReader();
+  initReaderLazy();
 });
